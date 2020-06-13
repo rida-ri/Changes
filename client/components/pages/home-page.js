@@ -30,6 +30,7 @@ const useStyles = makeStyles({
 const HomePage = () => {
   const classes = useStyles()
   const bull = <span className={classes.bullet}>•</span>
+
   const isLoggedin = useSelector(state => state.user.id)
 
   // TODO: Retrieve Current User
