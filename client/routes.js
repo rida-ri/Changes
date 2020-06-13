@@ -11,7 +11,7 @@ import {
   RegisterPage,
   SignInPage
 } from './components/pages'
-import {me} from './store'
+import allActions from './actions/allActions'
 
 /**
  * COMPONENT
@@ -57,11 +57,11 @@ const mapState = state => {
     isLoggedIn: !!state.user.id
   }
 }
-
+console.log(allActions)
 const mapDispatch = dispatch => {
   return {
     loadInitialData() {
-      dispatch(me())
+      dispatch(allActions.userActions.me())
     }
   }
 }
