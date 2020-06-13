@@ -11,7 +11,7 @@ const User = db.define('user', {
     type: Sequelize.STRING,
     allowNull: false
   },
-  usrname: {
+  username: {
     type: Sequelize.STRING,
     unique: true,
     validate: {
