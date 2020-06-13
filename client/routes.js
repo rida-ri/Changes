@@ -28,7 +28,6 @@ class Routes extends Component {
       <Switch>
         {/* Routes placed here are available to all visitors */}
         <Route exact path="/" component={HomePage} />
-        {/* Iffy about this one...Perhaps two pages for /signin or /signup might be better? */}
         <Route exact path="/newStory" component={PostStoryPage} />
         <Route exact path="/stories" component={StoriesPage} />
         <Route path="/story/:storyId" component={StoryViewPage} />
