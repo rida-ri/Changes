@@ -9,7 +9,7 @@ router.use((req, res, next) => {
   next(error)
 })
 
-router.use('/posts', require('./posts'))
+router.use('/changes', require('./changes'))
 
 router.use((req, res, next) => {
   const error = new Error('Not Found')

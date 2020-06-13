@@ -1,15 +1,15 @@
 const router = require('express').Router()
-const {Post} = require('../db/models')
+const {Change} = require('../db/models')
 module.exports = router
 
 router.get('/:userId', async (req, res, next) => {
   try {
-    const posts = await Post.findAll({
+    const changes = await Change.findAll({
       where: {
         userId: req.params.userId
       }
     })
-    res.json(posts)
+    res.json(changes)
   } catch (err) {
     next(err)
   }
@@ -17,10 +17,10 @@ router.get('/:userId', async (req, res, next) => {
 
 // router.post('/', async (req, res, next) => {
 //     try {
-//       const newPost = await Post.create({
+//       const newChange = await Change.create({
 
 //       })
-//       res.json(newPost)
+//       res.json(newChange)
 //     } catch (err) {
 //       next(err)
 //     }

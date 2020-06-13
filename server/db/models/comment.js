@@ -4,7 +4,10 @@ const db = require('../db')
 const Comment = db.define('comment', {
   body: {
     type: Sequelize.TEXT,
-    allowNull: false
+    allowNull: false,
+    validate: {
+      notEmpty: true
+    }
   },
   createdAt: {
     type: Sequelize.DATE
