@@ -3,6 +3,14 @@ import {connect} from 'react-redux'
 import {withRouter, Route, Switch} from 'react-router-dom'
 import PropTypes from 'prop-types'
 import {Login, Signup, UserHome} from './components'
+import {
+  PostStoryPage,
+  StoriesPage,
+  HomePage,
+  StoryViewPage,
+  RegisterPage,
+  SignInPage
+} from './components/pages'
 import {me} from './store'
 
 /**
@@ -19,8 +27,13 @@ class Routes extends Component {
     return (
       <Switch>
         {/* Routes placed here are available to all visitors */}
-        <Route path="/login" component={Login} />
-        <Route path="/signup" component={Signup} />
+        <Route exact path="/" component={HomePage} />
+        {/* Iffy about this one...Perhaps two pages for /signin or /signup might be better? */}
+        <Route exact path="/newStory" component={PostStoryPage} />
+        <Route exact path="/stories" component={StoriesPage} />
+        <Route path="/story/:storyId" component={StoryViewPage} />
+        <Route exact path="/register" component={RegisterPage} />
+        <Route exact path="/signIn" component={SignInPage} />
         {isLoggedIn && (
           <Switch>
             {/* Routes placed here are only available after logging in */}
