@@ -1,5 +1,5 @@
 const User = require('./user')
-const Post = require('./post')
+const Change = require('./change')
 const Comment = require('./comment')
 /**
  * If we had any associations to make, this would be a great place to put them!
@@ -7,11 +7,11 @@ const Comment = require('./comment')
  *
  *    BlogPost.belongsTo(User)
  */
-Post.belongsTo(User)
-User.hasMany(Post)
+Change.belongsTo(User)
+User.hasMany(Change)
 
-Comment.belongsTo(Post)
-Post.hasMany(Comment)
+Comment.belongsTo(Change)
+Change.hasMany(Comment)
 
 User.hasMany(Comment)
 Comment.belongsTo(User)
@@ -24,6 +24,6 @@ Comment.belongsTo(User)
 
 module.exports = {
   User,
-  Post,
+  Change,
   Comment
 }
