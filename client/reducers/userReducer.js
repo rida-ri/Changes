@@ -6,7 +6,7 @@ const user = (state = {}, action) => {
       console.log('he')
       return action.user
     case 'REMOVE_USER':
-      return defaultUser
+      return {}
     default:
       return state
   }
