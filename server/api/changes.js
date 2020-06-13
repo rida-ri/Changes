@@ -19,7 +19,13 @@ router.get('/:changeId', async (req, res, next) => {
       where: {
         id: req.params.changeId
       },
-      attributes: ['id', 'title', 'body']
+      // attributes: ['id', 'title', 'body'],
+      include: [
+        {model: User},
+        {model: Community},
+        {model: Comment, include: [{model: User}]}
+      ],
+      order: [[{model: Comment}, 'createdAt', 'ASC']]
     })
     res.json(singleChange)
   } catch (err) {
@@ -33,9 +39,11 @@ router.get('/from/:userId', async (req, res, next) => {
       where: {
         userId: req.params.userId
       },
-      include: [Comment],
-      attributes: ['id', 'title', 'body']
+      include: [{model: Comment, include: [{model: User}]}, {model: Community}],
+      // attributes: ['id', 'title', 'body'],
+      order: [['createdAt', 'DESC'], [{model: Changes}, 'createdAt', 'ASC']]
     })
+
     res.json(userChanges)
   } catch (err) {
     next(err)
@@ -59,6 +67,45 @@ router.get('/in/:communityId', async (req, res, next) => {
     //   }
     // })
     res.json(community)
+  } catch (error) {
+    next(error)
+  }
+})
+
+router.post('/add/:userId', async (req, res, next) => {
+  try {
+    const newChange = await Change.create({
+      userId: req.params.userId,
+      title: req.body.title,
+      body: req.body.body,
+      communityId: req.body.communityId
+    })
+    const getNewChange = await Change.findOne({
+      where: {
+        id: newChange.id
+      },
+      include: [
+        {model: User},
+        {model: Community},
+        {model: Community, include: [{model: User}]}
+      ],
+      order: [[{model: Comment}, 'createdAt', 'ASC']]
+    })
+
+    res.json(getNewChange)
+  } catch (error) {
+    next(error)
+  }
+})
+
+router.delete('/:changeId', async (req, res, next) => {
+  try {
+    const reverseChange = await Change.findOne({
+      where: {
+        id: req.params.changeId
+      }
+    })
+    res.status(200).json(reverseChange)
   } catch (error) {
     next(error)
   }
