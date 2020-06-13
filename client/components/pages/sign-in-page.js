@@ -1,10 +1,30 @@
-import React, {useEffect} from 'react'
+import React, {useEffect, useState} from 'react'
 import {useSelector, useDispatch} from 'react-redux'
 import allActions from '../../actions/allActions'
-
-// https://ux.stackexchange.com/questions/1080/using-sign-in-vs-using-log-in Aribitray reason to use signupOrJoin/registerChange/signin vs login/logout
+import FormControl from '@material-ui/core/FormControl'
+import Button from '@material-ui/core/Button'
+import InputLabel from '@material-ui/core/InputLabel'
+import Input from '@material-ui/core/Input'
+import FormHelperText from '@material-ui/core/FormHelperText'
 const SignInPage = () => {
-  // TODO: Simple two fields (Username and password)
+  // TODO: Simple two fields (email and password)
+  const [email, setEmail] = useState(''),
+    [password, setPassword] = useState('')
+
+  //   return {
+  //     handleSubmit(evt) {
+  //       evt.preventDefault()
+  //       const formName = evt.target.name
+  //       const email = evt.target.email.value
+  //       const password = evt.target.password.value
+  //       dispatch(allActions.userActions.auth(email, password, formName))
+  //     }
+
+  const handleSubmit = evt => {
+    evt.preventDefault()
+    console.log(email, password)
+    //dispatch(allActions.userActions.auth(email, password, formName))
+  }
   // TODO: Able to dispatch an action to hit our API and find our user and return some sort of session object
   // TODO: Redirect to post a new story or feed
 
@@ -14,7 +34,35 @@ const SignInPage = () => {
 
   return (
     <div className="signin_page">
-      <h1> This Is the signin page! </h1>
+      <FormControl>
+        <InputLabel htmlFor="my-input">Email address</InputLabel>
+        <Input
+          id="my-input"
+          aria-describedby="my-helper-text"
+          onChange={e => setEmail(e.target.value)}
+          value={email}
+        />
+      </FormControl>
+      <FormControl>
+        <InputLabel htmlFor="password">Password</InputLabel>
+        <Input
+          type="password"
+          id="password"
+          aria-describedby="my-helper-text"
+          onChange={e => setPassword(e.target.value)}
+          value={password}
+        />
+        <FormHelperText id="my-helper-text">
+          We'll never share your email.
+        </FormHelperText>
+      </FormControl>
+      <Button
+        variant="contained"
+        color="primary"
+        onClick={e => handleSubmit(e)}
+      >
+        Start making changes
+      </Button>
     </div>
   )
 }
