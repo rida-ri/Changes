@@ -9,7 +9,7 @@ import Card from '@material-ui/core/Card'
 import CardActions from '@material-ui/core/CardActions'
 import CardContent from '@material-ui/core/CardContent'
 import Typography from '@material-ui/core/Typography'
-
+import {FormHelperText} from '@material-ui/core'
 const useStyles = makeStyles({
   root: {
     minWidth: 275
@@ -57,26 +57,45 @@ const HomePage = () => {
       id: 2,
       title: 'Second',
       body: 'This is the second body'
-    },
-    {
-      id: 3,
-      title: 'Third',
-      body: 'This is the third body'
-    },
-    {
-      id: 4,
-      title: 'Fourth',
-      body: 'This is the fourth body'
     }
+    // {
+    //   id: 3,
+    //   title: 'Third',
+    //   body: 'This is the third body'
+    // },
+    // {
+    //   id: 4,
+    //   title: 'Fourth',
+    //   body: 'This is the fourth body'
+    // }
   ]
+  let user = 'Chase Thorpe'
   return (
-    <div className="home_page">
-      <h1> This Is the home page! {isLoggedin} </h1>
+    <div className="home_page" style={{backgroundColor: '#FEFAF1'}}>
+      <div style={{display: 'flex', justifyContent: 'space-between'}}>
+        <h1>Changes</h1>
+        <a href="/signIn">Login</a>
+      </div>
+      <div style={{display: 'flex', justifyContent: 'space-between'}}>
+        <div>
+          <h2>Silence is not the answer</h2>
+          <p>
+            Let's give the voice back to the people,lets give a platform for the
+            disenfranchisedpost your story, make a <span>Change</span>
+          </p>
+          <Button color="primary">Post Your Story</Button>
+        </div>
+        <div style={{border: '1px solid black', width: '50%'}}>
+          <img />
+        </div>
+      </div>
+      <div />
+      {/* <h1> This Is the home page! </h1>
       <Button variant="contained" color="primary" onClick={e => ctaHandler(e)}>
         Start making changes
-      </Button>
+      </Button> */}
 
-      <div id="min-feed">
+      {/* <div id="min-feed">
         {feed.map(item => {
           return (
             <Card className={classes.root} key={item.id}>
@@ -98,7 +117,7 @@ const HomePage = () => {
             </Card>
           )
         })}
-      </div>
+      </div> */}
     </div>
   )
 }
