@@ -36,7 +36,7 @@ const User = db.define('user', {
   avatar: {
     type: Sequelize.TEXT,
     defaultValue:
-      'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.nNlj87HpTXHzYdULAi5DqgHaHa%26pid%3DApi&f=1'
+      'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2Fa%2Fad%2FPlaceholder_no_text.svg%2F1024px-Placeholder_no_text.svg.png&f=1&nofb=1https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/Placeholder_no_text.svg/768px-Placeholder_no_text.svg.png'
   },
   isAdmin: {
     type: Sequelize.BOOLEAN,
