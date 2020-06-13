@@ -9,7 +9,7 @@ const HomePage = () => {
   // TODO: Determine possible redirection routes
   // TODO: Define Call to action (Post a story)
   // TODO: Define secondary action (Login segment for unauthenticated user)
-  // TODO: Include Minimal feed? Maybe like the unauthenticated view of /stories
+  // TODO: Include Minimal feed? Maybe like the unauthenticated view of /Changes
 
   return (
     <div className="home_page">

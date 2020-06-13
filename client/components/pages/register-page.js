@@ -10,7 +10,7 @@ const RegisterPage = () => {
   // TODO: Load in registration Component
 
   // Redirects:
-  // CTA: [Join/Register Button] = /newStory {Authenticated}
+  // CTA: [Join/Register Button] = /newChange {Authenticated}
   // CTA: [Login Button] = /login
   // Authentication: if (!unauthenticated) => {Do Nothing}
 

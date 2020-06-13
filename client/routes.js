@@ -4,10 +4,10 @@ import {withRouter, Route, Switch} from 'react-router-dom'
 import PropTypes from 'prop-types'
 import {Login, Signup, UserHome} from './components'
 import {
-  PostStoryPage,
-  StoriesPage,
+  PostChangePage,
+  ChangesPage,
   HomePage,
-  StoryViewPage,
+  ChangeViewPage,
   RegisterPage,
   SignInPage
 } from './components/pages'
@@ -28,11 +28,12 @@ class Routes extends Component {
       <Switch>
         {/* Routes placed here are available to all visitors */}
         <Route exact path="/" component={HomePage} />
-        <Route exact path="/newStory" component={PostStoryPage} />
-        <Route exact path="/stories" component={StoriesPage} />
-        <Route path="/story/:storyId" component={StoryViewPage} />
+        <Route exact path="/newChange" component={PostChangePage} />
+        <Route exact path="/changes" component={ChangesPage} />
+        <Route path="/change/:changeId" component={ChangeViewPage} />
         <Route exact path="/register" component={RegisterPage} />
         <Route exact path="/signIn" component={SignInPage} />
+
         {isLoggedIn && (
           <Switch>
             {/* Routes placed here are only available after logging in */}

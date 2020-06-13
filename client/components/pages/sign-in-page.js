@@ -9,7 +9,7 @@ const SignInPage = () => {
   // TODO: Redirect to post a new story or feed
 
   // Redirects:
-  // CTA: [Sign In Button] = /newStory {Authenticated} or /stories {Authenticated} depending on if user redirect
+  // CTA: [Sign In Button] = /newChange {Authenticated} or /changes {Authenticated} depending on if user redirect
   // Authentication: if (!unauthenticated) => {Do Nothing}
 
   return (
