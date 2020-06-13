@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize')
 const db = require('../db')
 
-const Change = db.define('post', {
+const Change = db.define('change', {
   title: {
     type: Sequelize.STRING,
     allowNull: false
