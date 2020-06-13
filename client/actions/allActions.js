@@ -1,7 +1,7 @@
-import homepageActions from './homepageActions'
+// import homepageActions from './homepageActions'
 
-const allActions = {
-  homepageActions
-}
+// const allActions = {
+//   homepageActions
+// }
 
-export default allActions
+// export default allActions
