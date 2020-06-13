@@ -15,11 +15,11 @@ const Community = db.define('community', {
     validate: {
       notEmpty: true
     }
-  },
-  subscribers: {
-    type: Sequelize.INTEGER,
-    defaultValue: 0
   }
+  //   subscribers: {
+  //     type: Sequelize.INTEGER,
+  //     defaultValue: 0
+  //   }
 })
 
 module.exports = Community

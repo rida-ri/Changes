@@ -9,7 +9,12 @@ module.exports = router
 router.get('/', async (req, res, next) => {
   try {
     const allUsers = await User.findAll({
-      attributes: ['id', 'firstName', 'lastName', 'userName', 'email', 'avatar']
+      include: [
+        {model: Community, as: 'subscriber'},
+        {model: User, as: 'supporter'},
+        {model: User, as: 'supporting'}
+      ]
+      // attributes: ['id', 'firstName', 'lastName', 'userName', 'email', 'avatar']
     })
     res.json(allUsers)
   } catch (err) {
@@ -67,32 +72,31 @@ router.get('/', async (req, res, next) => {
 //   }
 // })
 
-// router.put('/:userId', async (req, res, next) => {
-//   try {
-//     const updateInfo = {
-//       firstName: req.body.firstName,
-//       lastName: req.body.lastName,
-//       avatar: req.body.avatar,
-//       //add as you desire
-//     }
-//     if (req.body.password) updateInfo.password = req.body.password
-//     const [updateUser] = await User.update(updateInfo, {
-//       where: {
-//         id: req.params.userId
-//       },
-//       returning: true
-//     })
+router.put('/:userId', async (req, res, next) => {
+  try {
+    const updateInfo = {
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
+      avatar: req.body.avatar
+      //add as you desire
+    }
+    if (req.body.password) updateInfo.password = req.body.password
+    const [updateUser] = await User.update(updateInfo, {
+      where: {
+        id: req.params.userId
+      },
+      returning: true
+    })
 
-//     const updatedUser = await User.findAll({
-//       where: {
-//         id: updateUser[0].id
-//       },
-//       include: [{model: Community, as: 'subscriber'}]
-//     })
+    const updatedUser = await User.findAll({
+      where: {
+        id: updateUser[0].id
+      },
+      include: [{model: Community, as: 'subscriber'}]
+    })
 
-//     res.json(updatedUser)
-
-//   } catch (error) {
-//     next(error)
-//   }
-// })
+    res.json(updatedUser)
+  } catch (error) {
+    next(error)
+  }
+})
