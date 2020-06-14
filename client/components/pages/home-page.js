@@ -50,6 +50,7 @@ const HomePage = () => {
       <div style={{display: 'flex', justifyContent: 'space-between'}}>
         <h1>Changes</h1>
         <a href="/signIn">Login</a>
+        <a href="/register">Register</a>
       </div>
       <div style={{display: 'flex', justifyContent: 'space-between'}}>
         <div>

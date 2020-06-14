@@ -36,6 +36,35 @@ const auth = (email, password, method) => async dispatch => {
   }
 }
 
+const signUpauth = (
+  firstName,
+  lastName,
+  userName,
+  email,
+  password,
+  method
+) => async dispatch => {
+  let res
+  try {
+    res = await axios.post(`/auth/${method}`, {
+      firstName,
+      lastName,
+      userName,
+      email,
+      password
+    })
+  } catch (authError) {
+    return dispatch(getUser({error: authError}))
+  }
+
+  try {
+    dispatch(getUser(res.data))
+    history.push('/home')
+  } catch (dispatchOrHistoryErr) {
+    console.error(dispatchOrHistoryErr)
+  }
+}
+
 const logout = () => async dispatch => {
   try {
     await axios.post('/auth/logout')
@@ -49,6 +78,7 @@ const logout = () => async dispatch => {
 export default {
   logout,
   auth,
+  signUpauth,
   me,
   getUser,
   removeUser,
