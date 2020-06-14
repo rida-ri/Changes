@@ -10,12 +10,13 @@ import FormHelperText from '@material-ui/core/FormHelperText'
 const SignInPage = () => {
   // TODO: Simple two fields (email and password)
   const [email, setEmail] = useState(''),
-    [password, setPassword] = useState('')
+    [password, setPassword] = useState(''),
+    dispatch = useDispatch()
 
   const handleSubmit = evt => {
     evt.preventDefault()
-    console.log(email, password)
-    //dispatch(allActions.userActions.auth(email, password, formName))
+
+    dispatch(allActions.userActions.auth(email, password, 'login'))
   }
 
   // TODO: Able to dispatch an action to hit our API and find our user and return some sort of session object
