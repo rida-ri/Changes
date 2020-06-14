@@ -101,7 +101,7 @@ router.put('/:userId', async (req, res, next) => {
   }
 })
 
-router.put('/follow/:userId', async (req, res, next) => {
+router.put('/support/:userId', async (req, res, next) => {
   try {
     const user = await User.findOne({
       where: {
@@ -138,7 +138,7 @@ router.put('/follow/:userId', async (req, res, next) => {
   }
 })
 
-router.put('/unfollow/:userId', async (req, res, next) => {
+router.put('/notSupport/:userId', async (req, res, next) => {
   try {
     const user = await User.findOne({
       where: {
@@ -153,7 +153,7 @@ router.put('/unfollow/:userId', async (req, res, next) => {
       }
     })
 
-    useReducer.removeSupporting(notSupporting.id)
+    user.removeSupporting(notSupporting.id)
     user.decreaseSupporting()
     notSupporting.decreaseSupporter()
 
