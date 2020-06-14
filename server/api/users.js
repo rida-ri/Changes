@@ -100,3 +100,95 @@ router.put('/:userId', async (req, res, next) => {
     next(error)
   }
 })
+
+router.put('/support/:userId', async (req, res, next) => {
+  try {
+    const user = await User.findOne({
+      where: {
+        //Check when updating the params in sessions
+        id: req.session.passport.user.id
+      }
+    })
+
+    const supporting = await User.findOne({
+      where: {
+        id: req.params.userId
+      }
+    })
+
+    user.addSupporting(supporting.id)
+    user.increaseSupporting()
+    supporting.increaseSupporters()
+
+    await user.save()
+    await supporting.save()
+
+    const updatedUser = await findOne({
+      where: {
+        id: req.params.userId
+      },
+      include: [{model: User, as: 'supporter'}, {model: User, as: 'supporting'}]
+    })
+
+    const isSupporting = user.hasSupporting(supporting)
+
+    res.json({profile: user, isSupporting: isSupporting})
+  } catch (error) {
+    next(error)
+  }
+})
+
+router.put('/notSupport/:userId', async (req, res, next) => {
+  try {
+    const user = await User.findOne({
+      where: {
+        //Check when updating the params in sessions
+        id: req.session.passport.user.id
+      }
+    })
+
+    const notSupporting = await User.findOne({
+      where: {
+        id: req.params.userId
+      }
+    })
+
+    user.removeSupporting(notSupporting.id)
+    user.decreaseSupporting()
+    notSupporting.decreaseSupporter()
+
+    await user.save()
+    await notSupporting.save()
+
+    const updatedUser = await User.findOne({
+      where: {
+        id: req.params.userId
+      },
+      include: [{model: User, as: 'supporter'}, {model: User, as: 'supporting'}]
+    })
+
+    const isNotSupporting = await user.hasSupporting(updatedUser)
+
+    res.json({profile: updatedUser, isNotSupporting: isNotSupporting})
+  } catch (error) {
+    next(error)
+  }
+})
+
+router.delete('/userId', async (req, res, next) => {
+  try {
+    const deleteUser = await User.findOne({
+      where: {
+        id: req.params.userId
+      }
+    })
+    if (deleteUser) {
+      await deleteUser.destroy()
+      res.status(204).send(deleteUser)
+    } else {
+      res.sendStatus(404)
+    }
+  } catch (error) {
+    next(error)
+  }
+})
