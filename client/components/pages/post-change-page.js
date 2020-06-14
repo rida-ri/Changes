@@ -1,6 +1,7 @@
 import React, {useEffect} from 'react'
 import {useSelector, useDispatch} from 'react-redux'
 import allActions from '../../actions/allActions'
+import {Form, Col, Row, Button} from 'react-bootstrap'
 
 const PostChangePage = () => {
   // TODO: Have basic fields to have user input connected with actions/reducers
@@ -18,7 +19,39 @@ const PostChangePage = () => {
 
   return (
     <div className="post_change_page">
-      <h1> This Is the post Change page! </h1>
+      <h3>Post your experience to CHANGE the WORLD</h3>
+      <Form>
+        <Form.Row>
+          <Col sm={5} className="my-1">
+            <Form.Label>Title of your story....</Form.Label>
+            <Form.Control id="inlineFormInputName" />
+          </Col>
+          <Col xs="3">
+            <Form.Check
+              label="Tell your story Anonymous?"
+              id="custom-switch"
+              aria-label="radio 1"
+            />
+          </Col>
+        </Form.Row>
+
+        <Form.Row>
+          <Col>
+            <Form.Label>Write your story below....</Form.Label>
+            <Form.Control as="textarea" rows="5" />
+          </Col>
+        </Form.Row>
+        <div className="allowComments">
+          <Form.Check
+            label="Allow Comments?"
+            id="custom-switch"
+            aria-label="radio 1"
+          />
+        </div>
+        <Button variant="primary" type="submit">
+          Post Your Change
+        </Button>
+      </Form>
     </div>
   )
 }
