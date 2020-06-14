@@ -1,16 +1,36 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
+import {Button, Container, Row, Col} from 'react-bootstrap'
+import ChangesFeed from './change-feed'
+import Supporter from './supporter'
+// import {ChangesFeed, Supporter, Supporting} from './components'
 
 /**
  * COMPONENT
  */
 export const UserHome = props => {
-  const {email} = props
+  // const {email} = props
 
   return (
     <div>
-      <h3>Welcome, {email}</h3>
+      <div>
+        <h3>Welcome, {props.user.userName}</h3>
+      </div>
+
+      <ChangesFeed props={props} />
+      <div>
+        <Container>
+          <Row>
+            <Col>
+              <Supporter props={props} name="Supporters" />
+            </Col>
+            <Col>
+              <Supporter props={props} name="Supporting" />
+            </Col>
+          </Row>
+        </Container>
+      </div>
     </div>
   )
 }
@@ -20,7 +40,7 @@ export const UserHome = props => {
  */
 const mapState = state => {
   return {
-    email: state.user.email
+    user: state.user
   }
 }
 

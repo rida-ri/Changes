@@ -2,7 +2,14 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {withRouter, Route, Switch} from 'react-router-dom'
 import PropTypes from 'prop-types'
-import {Login, Signup, UserHome} from './components'
+import {
+  Login,
+  Signup,
+  UserHome,
+  ChangesFeed,
+  Supporter,
+  Supporting
+} from './components'
 import {
   PostChangePage,
   ChangesPage,
@@ -28,15 +35,16 @@ class Routes extends Component {
       <Switch>
         {/* Routes placed here are available to all visitors */}
         <Route exact path="/" component={HomePage} />
-        <Route exact path="/newChange" component={PostChangePage} />
+        {/* <Route exact path="/newChange" component={PostChangePage} />
         <Route exact path="/changes" component={ChangesPage} />
         <Route path="/change/:changeId" component={ChangeViewPage} />
-        <Route exact path="/register" component={RegisterPage} />
+        <Route exact path="/register" component={RegisterPage} /> */}
         <Route exact path="/signIn" component={SignInPage} />
         {isLoggedIn && (
           <Switch>
             {/* Routes placed here are only available after logging in */}
             <Route path="/home" component={UserHome} />
+            {/* <Route path="/changeFeed" component={ChangesFeed} /> */}
           </Switch>
         )}
         {/* Displays our Login component as a fallback */}
@@ -75,4 +83,5 @@ export default withRouter(connect(mapState, mapDispatch)(Routes))
 Routes.propTypes = {
   loadInitialData: PropTypes.func.isRequired,
   isLoggedIn: PropTypes.bool.isRequired
+  // isAdmin: PropTypes.bool.isRequired
 }
