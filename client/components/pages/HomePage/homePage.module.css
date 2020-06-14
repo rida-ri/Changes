@@ -1,0 +1,111 @@
+@import url('../../../css-variables.css');
+
+.Container {
+  background-color: var(--main-bg-color);
+  height: 60vh;
+}
+
+.Banner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.BannerHeading {
+  color: var(--primary-color);
+  padding: 10px 0 0 36px;
+}
+
+.BannerLinks a {
+  padding-left: 12px;
+  padding-right: 48px;
+  text-decoration: none;
+  color: var(--darkgrey-text);
+  font-weight: 800;
+}
+
+.CTAContainer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 6%;
+  margin-bottom: 12px;
+}
+
+.CTAHeader {
+  color: var(--darkgrey-text);
+  font-size: 2.4em;
+  padding-left: 36px;
+  font-weight: 800;
+}
+
+.CTAText {
+  color: var(--secondary-grey-text);
+  padding-left: 36px;
+}
+
+.CTAButton {
+  background-color: var(--primary-color) !important;
+  color: var(--darkgrey-text) !important;
+  font-size: 1.1em !important;
+  font-weight: 800 !important;
+  width: 40% !important;
+  height: 50px !important;
+  margin-left: 36px !important;
+}
+
+.CTAImage {
+  width: 55%;
+  height: 295px;
+  padding-left: 50px;
+}
+
+.Image {
+  max-height: 100%;
+  width: auto;
+}
+
+.SplashFeedContainer {
+  height: 48vh;
+  background-color: black;
+}
+
+.SplashFeedHeader {
+  color: var(--primary-color);
+  font-size: 2.4em;
+  padding-left: 36px;
+  padding-top: 36px;
+  font-weight: 800;
+}
+
+.SplashFeed {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 28px;
+}
+
+.SplashStory {
+  width: 40%;
+  height: 250px;
+  background-color: var(--main-bg-color);
+  color: var(--darkgrey-text) !important;
+}
+
+.SplashContent {
+  padding: 25px;
+}
+
+.SplashContent h3 {
+  color: var(--darkgrey-text) !important;
+  font-weight: 800;
+}
+
+.Author {
+  float: right;
+}
+
+.Stripe {
+  background-color: var(--primary-color);
+  height: 10px;
+  width: 100%;
+}
