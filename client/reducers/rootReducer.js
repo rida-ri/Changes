@@ -1,8 +1,8 @@
-import homePage from './homepageReducer'
+import user from './userReducer'
 import {combineReducers} from 'redux'
 
 const rootReducer = combineReducers({
-  homePage
+  user
 })
 
 export default rootReducer
