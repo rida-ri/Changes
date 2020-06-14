@@ -40,7 +40,6 @@ class Routes extends Component {
         <Route path="/change/:changeId" component={ChangeViewPage} />
         <Route exact path="/register" component={RegisterPage} /> */}
         <Route exact path="/signIn" component={SignInPage} />
-
         {isLoggedIn && (
           <Switch>
             {/* Routes placed here are only available after logging in */}

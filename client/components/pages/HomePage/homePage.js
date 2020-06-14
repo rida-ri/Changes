@@ -37,15 +37,6 @@ const HomePage = () => {
   return (
     <>
       <div className={styles.Container}>
-        <div className={styles.Banner}>
-          <div>
-            <h1 className={styles.BannerHeading}>Changes</h1>
-          </div>
-          <div className={styles.BannerLinks}>
-            <a href="/signIn">Login</a>
-            <a href="/register">Register</a>
-          </div>
-        </div>
         <div className={styles.CTAContainer}>
           <div>
             <h2 className={styles.CTAHeader}>Silence is not the answer</h2>

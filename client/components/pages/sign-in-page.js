@@ -26,11 +26,11 @@ const SignInPage = () => {
     <div className="signin_page">
       <Form.Row>
         <Form.Group as={Col} md="4" controlId="validationFormikUsername">
-          <Form.Label>email</Form.Label>
+          <Form.Label>Email</Form.Label>
           <InputGroup>
             <Form.Control
               type="text"
-              placeholder="Username"
+              placeholder="Email"
               aria-describedby="inputGroupPrepend"
               name="username"
               onChange={e => setEmail(e.target.value)}

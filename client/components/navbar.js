@@ -3,28 +3,34 @@ import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {logout} from '../store'
+import allActions from '../actions/allActions'
+import styles from './pages/HomePage/homePage.module.css'
 
 const Navbar = ({handleClick, isLoggedIn}) => (
   <div>
-    <h1>CHANGES</h1>
-    <nav>
-      {isLoggedIn ? (
+    {isLoggedIn ? (
+      <div className={styles.Banner}>
         <div>
-          {/* The navbar will show these links after you log in */}
-          <Link to="/home">Home</Link>
-          <a href="#" onClick={handleClick}>
+          <h1 className={styles.BannerHeading}>Changes</h1>
+        </div>
+        <div className={styles.BannerLinks}>
+          <a href="/newChange">Post a Change</a>
+          <a href="/" onClick={e => handleClick(e)}>
             Logout
           </a>
         </div>
-      ) : (
+      </div>
+    ) : (
+      <div className={styles.Banner}>
         <div>
-          {/* The navbar will show these links before you log in */}
-          <Link to="/login">Login</Link>
-          <Link to="/signup">Sign Up</Link>
+          <h1 className={styles.BannerHeading}>Changes</h1>
         </div>
-      )}
-    </nav>
-    <hr />
+        <div className={styles.BannerLinks}>
+          <a href="/signIn">Login</a>
+          <a href="/register">Register</a>
+        </div>
+      </div>
+    )}
   </div>
 )
 
