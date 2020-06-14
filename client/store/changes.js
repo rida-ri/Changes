@@ -4,8 +4,8 @@ import history from '../history'
 /**
  * ACTION TYPES
  */
-const GET_USER = 'GET_USER'
-const REMOVE_USER = 'REMOVE_USER'
+const GET_CHANGES = 'GET_CHANGES'
+// const REMOVE_USER = 'REMOVE_USER'
 
 /**
  * INITIAL STATE
@@ -15,16 +15,17 @@ const change = []
 /**
  * ACTION CREATORS
  */
-const getUser = user => ({type: GET_USER, user})
-const removeUser = () => ({type: REMOVE_USER})
+const getChanges = change => ({type: GET_CHANGES, change})
+// const removeUser = () => ({type: REMOVE_USER})
 
 /**
  * THUNK CREATORS
  */
-export const me = () => async dispatch => {
+export const gotChanges = () => async dispatch => {
   try {
-    const res = await axios.get('/auth/me')
-    dispatch(getUser(res.data || defaultUser))
+    const res = await axios.get('/api/changes')
+    console.log(res, 'res in got changes')
+    // dispatch(getUser(res.data || defaultUser))
   } catch (err) {
     console.error(err)
   }

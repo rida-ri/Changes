@@ -5,7 +5,12 @@ module.exports = router
 router.get('/', async (req, res, next) => {
   try {
     const allChanges = await Change.findAll({
-      include: [User, {model: Comment, include: User}]
+      // include: [User, {model: Comment, include: User}]
+      include: [
+        {model: User},
+        {model: Community},
+        {model: Comment, include: [{model: User}]}
+      ]
     })
     res.json(allChanges)
   } catch (err) {
